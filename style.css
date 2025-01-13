@@ -1,0 +1,78 @@
+:root {
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-text: #353535;
+    --color-background: #ffffff;
+    --color-block-background: #d6d6d6;
+    --color-link: #aaaaaa;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: #cacaca;
+    --color-background: #181818;
+    --color-block-background: #292929;
+    --color-link: #aaaaaa;
+  }
+}
+
+html {
+  color: var(--color-text);
+  background-color: var(--color-background);
+  font-family: "Fire Code", monospace;
+}
+
+body {
+  max-width: 60rem;
+  padding: 1rem;
+  margin-inline: auto;
+  line-height: 1.5;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+nav li {
+  display: inline;
+}
+
+:is(h1, h2, h3, h4, h5, h6)::before {
+  content: "#";
+}
+@media (width > 62rem) {
+  :is(h1, h2, h3, h4, h5, h6)::before {
+    margin-left: -1ch;
+  }
+}
+
+pre code {
+  counter-reset: code-line-counter;
+
+  background-color: var(--color-block-background);
+  margin-block: 0.5rem;
+  padding-block: 0.5rem;
+  border-radius: 0.5rem;
+  display: block;
+  overflow-x: auto;
+
+  & span {
+    counter-increment: code-line-counter;
+
+    display: block;
+    padding-inline: 1rem; /* should be margin-inline, but it still doesn't work correctly on some browser versions */
+    width: max-content;
+    justify-content: space-between;
+
+    &::before {
+      content: counter(code-line-counter);
+
+      display: inline-block;
+      text-align: right;
+      margin-right: 1ch;
+    }
+  }
+}
