@@ -24,26 +24,33 @@
         highly customizable with more customization features added when
         possible.
       </p>
-      <p>Here as an example of it's use:</p>
+      <p>Here as an example of its use:</p>
       <pre>
         <code>
           module "eks_cluster" {
-            source = "https://github.com/mattisafur/aws_eks_cluster.git"
+            source = "https://github.com/mattisafur/aws_eks_cluster.git?ref=v0.2.0"
 
             cluster_name = "my_eks_cluster"
             
             public_subnet_ids  = ["some-public-subnet-id"]
             private_subnet_ids = ["some-private-subnet-id"]
-
-            support_type = "STANDARD"
             
             fargate_profile = [
               {
-                name = "main-profile"
+                name = "main"
                 
                 selectors = [
                   {
                     namespace = "default"
+                  }
+                ]
+              },
+              {
+                name = "monitoring"
+                
+                selectors = [
+                  {
+                    namespace = "monitoring"
                   }
                 ]
               }
@@ -51,6 +58,16 @@
           }
         </code>
       </pre>
+      <p>
+        This example will deploy an EKS cluster and two fargate profiles, one
+        for pods in the default namespace and another for pods in the monitoring
+        namespace. As you might have noticed, no IAM roles have been specified
+        for the cluster nor the fargate profiles. When an IAM role is not
+        defined, the module uses the default IAM role name given by Amazon's
+        documentation. In this example, the cluster will use
+        <code>AmazonEKSAutoClusterRole</code> and the fargate profiles will use
+        <code>AmazonEKSFargatePodExecutionRole</code>.
+      </p>
     </main>
   </body>
 </html>
