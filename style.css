@@ -3,7 +3,7 @@
 }
 @media (prefers-color-scheme: light) {
   :root {
-    --color-text: #353535;
+    --color-text: #101010;
     --color-background: #ffffff;
     --color-block-background: #d6d6d6;
     --color-link: #aaaaaa;
@@ -11,7 +11,7 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-text: #cacaca;
+    --color-text: #efefef;
     --color-background: #181818;
     --color-block-background: #292929;
     --color-link: #aaaaaa;
@@ -49,12 +49,22 @@ nav li {
   }
 }
 
+/* inline code */
+p code {
+  background-color: var(--color-block-background);
+  padding-inline: 0.25rem;
+  padding-block: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+/* code snippets */
 pre code {
   counter-reset: code-line-counter;
 
   background-color: var(--color-block-background);
   margin-block: 0.5rem;
   padding-block: 0.5rem;
+  padding-inline: 1rem;
   border-radius: 0.5rem;
   display: block;
   overflow-x: auto;
@@ -63,7 +73,6 @@ pre code {
     counter-increment: code-line-counter;
 
     display: block;
-    padding-inline: 1rem; /* should be margin-inline, but it still doesn't work correctly on some browser versions */
     width: max-content;
     justify-content: space-between;
 

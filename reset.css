@@ -15,7 +15,7 @@
 /* set selection color to device theme color */
 *::selection {
   color: HighlightText;
-  background-color: Highlight;
+  background: Highlight;
 }
 
 /* set minimum height of body to (<view height using> - <extra size that appears when url bar disappears on scroll>) */
@@ -58,6 +58,7 @@ dl {
 /* remove second border from tables and fixes spacing issues */
 table {
   border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /** 
@@ -72,14 +73,14 @@ textarea,
 textarea::placeholder {
   font: inherit;
   color: inherit;
-  background-color: inherit;
+  background: inherit;
   accent-color: Highlight;
 }
 
-/* set placeholder opacity to 0.5 (cus it has a different default on each browser) */
+/* set placeholder opacity to 50% (cus it has a different default on each browser) */
 input::placeholder,
 textarea::placeholder {
-  opacity: 0.5;
+  opacity: 50%;
 }
 
 /* disable all animation on website when animations are diabled in OS/browser */
