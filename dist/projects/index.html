@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <link rel="stylesheet" href="/reset.css" />
+    <link rel="stylesheet" href="/style.css" />
+
+    <script type="module" src="/main.js"></script>
+
+    <title>My Projects</title>
+  </head>
+
+  <body>
+    <main>
+      <h1>EKS cluster Terraform module</h1>
+      <a href="https://github.com/mattisafur/exmaple-eks-deployment"
+        >[github]</a
+      >
+      <p>
+        This Terraform module deploys an EKS cluster and user-defined compute
+        resources including fargate profiles and node groups. The module is
+        highly customizable with more customization features added when
+        possible.
+      </p>
+      <p>Here as an example of it's use:</p>
+      <pre>
+        <code>
+          module "eks_cluster" {
+            source = "https://github.com/mattisafur/aws_eks_cluster.git"
+
+            cluster_name = "my_eks_cluster"
+            
+            public_subnet_ids  = ["some-public-subnet-id"]
+            private_subnet_ids = ["some-private-subnet-id"]
+
+            support_type = "STANDARD"
+            
+            fargate_profile = [
+              {
+                name = "main-profile"
+                
+                selectors = [
+                  {
+                    namespace = "default"
+                  }
+                ]
+              }
+            ]
+          }
+        </code>
+      </pre>
+    </main>
+  </body>
+</html>

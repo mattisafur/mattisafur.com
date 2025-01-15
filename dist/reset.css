@@ -1,0 +1,93 @@
+/* makes with and height of items include the border's size */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* remove default margins from items */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* set selection color to device theme color */
+*::selection {
+  color: HighlightText;
+  background-color: Highlight;
+}
+
+/* set minimum height of body to (<view height using> - <extra size that appears when url bar disappears on scroll>) */
+body {
+  min-height: 100svh;
+  text-rendering: optimizeSpeed;
+  /* TODO: remove if it doesn't actually do anything */
+}
+
+img,
+picture,
+svg,
+video {
+  /* set color of alt text when image fails to load */
+  color: #ff0000;
+
+  /* make image the max size of its parent container */
+  /* make sure alt text is aligned to the middle of images */
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+/* wrap multiple words at a time to make wrapping look more balanced */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/* remove dot from list elements */
+ul,
+ol,
+dl {
+  list-style: none;
+}
+
+/* remove second border from tables and fixes spacing issues */
+table {
+  border-collapse: collapse;
+}
+
+/** 
+ * on windows devices with custom theme when using chromium based browsers,
+ * don't override theme with the windows theme 
+ */
+button,
+input,
+input::placeholder,
+select,
+textarea,
+textarea::placeholder {
+  font: inherit;
+  color: inherit;
+  background-color: inherit;
+  accent-color: Highlight;
+}
+
+/* set placeholder opacity to 0.5 (cus it has a different default on each browser) */
+input::placeholder,
+textarea::placeholder {
+  opacity: 0.5;
+}
+
+/* disable all animation on website when animations are diabled in OS/browser */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
