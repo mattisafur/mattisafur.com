@@ -1,0 +1,58 @@
+# baseURL = 'https://mattisafur.com/'
+# languageCode = 'en-us'
+# title = 'Matan Azizi'
+
+# theme = "risotto"
+
+# [menu]
+# [[menu.main]]
+# identifier = "projects"
+# name = "Projects"
+# url = "/projects/"
+# weight = 10
+
+baseURL = "https://mattisafur.com"
+languageCode = "en-us"
+title = "Matan Azizi"
+
+theme = "risotto"
+
+author = "Matan Azizi"                # no difference?
+# copyright = "© copyright Matan Azizi" # should I add this?
+paginate = 3                          # no difference?
+defaultContentLanguage = "en"         # necessary?
+enableInlineShortcodes = true         # no difference?
+sectionPagesMenu = "main"             # necssary?
+
+[menu]
+[[menu.main]]
+identifier = "guides"
+name = "Guides"
+url = "/guides"
+weight = 10
+
+[params]
+noindex = false # don't add noindex to page metadata
+
+[params.theme]
+palette = "base16-dark" # color theme for risotto
+
+# about section (right side of page)
+[params.about]
+title = "Matan Azizi"
+description = "DevOps Engineer"
+# logo = "</>"
+
+# social links (right side of page)
+[[params.socialLinks]]
+icon = "fa-solid fa-envelope"
+title = "Email"
+url = "mailto:mattisafur@outlook.com"
+
+[[params.socialLinks]]
+icon = "fa-brands fa-linkedin"
+title = "LinkedIn"
+url = "https://www.linkedin.com/in/matan-azizi/"
+
+[markup.goldmark.renderer]
+unsafe = true # allow inline html in markdown
