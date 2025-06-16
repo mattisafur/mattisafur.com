@@ -1,73 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/reset.css" />
     <link rel="stylesheet" href="/style.css" />
-
-    <script type="module" src="/main.js"></script>
-
-    <title>My Projects</title>
+    <title>Matan Azizi - Projects</title>
   </head>
-
   <body>
+    <nav>
+      <a href="/">Matan Azizi</a>
+      <ul>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/testpage">Test Page</a></li>
+      </ul>
+    </nav>
     <main>
-      <h1>EKS cluster Terraform module</h1>
-      <a href="https://github.com/mattisafur/exmaple-eks-deployment"
-        >[github]</a
-      >
-      <p>
-        This Terraform module deploys an EKS cluster and user-defined compute
-        resources including fargate profiles and node groups. The module is
-        highly customizable with more customization features added when
-        possible.
-      </p>
-      <p>Here as an example of its use:</p>
-      <pre>
-        <code>
-          module "eks_cluster" {
-            source = "https://github.com/mattisafur/aws_eks_cluster.git?ref=v0.2.0"
-
-            cluster_name = "my_eks_cluster"
-            
-            public_subnet_ids  = ["some-public-subnet-id"]
-            private_subnet_ids = ["some-private-subnet-id"]
-            
-            fargate_profile = [
-              {
-                name = "main"
-                
-                selectors = [
-                  {
-                    namespace = "default"
-                  }
-                ]
-              },
-              {
-                name = "monitoring"
-                
-                selectors = [
-                  {
-                    namespace = "monitoring"
-                  }
-                ]
-              }
-            ]
-          }
-        </code>
-      </pre>
-      <p>
-        This example will deploy an EKS cluster and two fargate profiles, one
-        for pods in the default namespace and another for pods in the monitoring
-        namespace. As you might have noticed, no IAM roles have been specified
-        for the cluster nor the fargate profiles. When an IAM role is not
-        defined, the module uses the default IAM role name given by Amazon's
-        documentation. In this example, the cluster will use
-        <code>AmazonEKSAutoClusterRole</code> and the fargate profiles will use
-        <code>AmazonEKSFargatePodExecutionRole</code>.
-      </p>
+      <section>
+        <h1>EKS easy-deploy Terraform module</h1>
+        <p>
+          Years ago, when I was creating an EKS cluster for the first time, I
+          noticed that some of the configuration thee is hard to grasp as a
+          beginner, And while this is a great place to learn I know that many
+          junior devops engineers may not have the time to learn the ins and
+          outs of the EKS, for example when faced with deadlines at work. It is
+          for these scenarios that I have created this terraform module.
+        </p>
+        <p>
+          This module deploy all the necessary resources needed to get an EKS
+          cluster up and running (and the cluster itself of course). I have
+          designed the module to be highly customizable but still easu to use
+          with many default values and variable validations with helpful error
+          messages.
+        </p>
+      </section>
+      <section>
+        <!-- kynan's tracker website -->
+        <h1>web application docker pipeline</h1>
+      </section>
+      <section>
+        <!-- kynan's home server -->
+        <h1>Reverse proxy for containerized applications using Traefik</h1>
+      </section>
+      <section>
+        <!-- deployment of a talos k8s cluster on proxmox -->
+        <h1>Kubernetes deployment using Talos Linux</h1>
+      </section>
     </main>
   </body>
 </html>

@@ -1,87 +1,99 @@
+/* global */
+
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 :root {
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: light) {
   :root {
-    --color-text: #101010;
     --color-background: #ffffff;
-    --color-block-background: #d6d6d6;
+    --color-text: #101010;
     --color-link: #aaaaaa;
+    --color-link-background: #d6d6d6;
   }
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-text: #efefef;
+    --phone-width-limit: 25rem;
     --color-background: #181818;
-    --color-block-background: #292929;
+    --color-text: #efefef;
     --color-link: #aaaaaa;
+    --color-link-background: #292929;
   }
 }
 
 html {
-  color: var(--color-text);
+  font-family: "Inconsolata", monospace;
   background-color: var(--color-background);
-  font-family: "Fire Code", monospace;
-}
-
-body {
-  max-width: 60rem;
-  padding: 1rem;
-  margin-inline: auto;
-  line-height: 1.5;
 }
 
 a {
-  color: var(--color-link);
   text-decoration: none;
 }
 
-nav li {
-  display: inline;
-}
+/* navigation */
 
-:is(h1, h2, h3, h4, h5, h6)::before {
-  content: "#";
-}
-@media (width > 62rem) {
-  :is(h1, h2, h3, h4, h5, h6)::before {
-    margin-left: -1ch;
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & > a {
+    padding: 0.5rem;
+
+    color: var(--color-text);
+    font-size: 2rem;
+  }
+
+  ul {
+    display: flex;
+
+    li {
+      padding-inline: 1rem;
+
+      a {
+        color: var(--color-link);
+        font-size: 1.5rem;
+      }
+    }
   }
 }
 
-/* inline code */
-p code {
-  background-color: var(--color-block-background);
-  padding-inline: 0.25rem;
-  padding-block: 0.25rem;
-  border-radius: 0.25rem;
+/* main content */
+
+main {
+  @media (width > 25rem) {
+    /* ASK which one should I use? */
+    /* padding-inline: 2rem; */
+    margin-inline: 2rem;
+  }
 }
 
-/* code snippets */
-pre code {
-  counter-reset: code-line-counter;
+section {
+  margin-bottom: 1rem;
 
-  background-color: var(--color-block-background);
-  margin-block: 0.5rem;
-  padding-block: 0.5rem;
-  padding-inline: 1rem;
-  border-radius: 0.5rem;
-  display: block;
-  overflow-x: auto;
+  :is(h1, h2, h3, h4, h5, h6) {
+    margin-bottom: 0.5rem;
 
-  & span {
-    counter-increment: code-line-counter;
+    &:before {
+      content: "# ";
 
-    display: block;
-    width: max-content;
-    justify-content: space-between;
-
-    &::before {
-      content: counter(code-line-counter);
-
-      display: inline-block;
-      text-align: right;
-      margin-right: 1ch;
+      @media (width > 25rem) {
+        margin-left: -2ch;
+      }
     }
+  }
+
+  a {
+    display: inline-block;
+    padding: 0.5rem;
+
+    color: var(--color-link);
+    background-color: var(--color-link-background);
+  }
+
+  li {
+    margin-bottom: 0.5rem;
   }
 }

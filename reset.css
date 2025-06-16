@@ -21,16 +21,14 @@
 /* set minimum height of body to (<view height using> - <extra size that appears when url bar disappears on scroll>) */
 body {
   min-height: 100svh;
-  text-rendering: optimizeSpeed;
-  /* TODO: remove if it doesn't actually do anything */
 }
 
 img,
 picture,
 svg,
 video {
-  /* set color of alt text when image fails to load */
-  color: #ff0000;
+  /* set style of alt text when image fails to load */
+  font-style: italic;
 
   /* make image the max size of its parent container */
   /* make sure alt text is aligned to the middle of images */
